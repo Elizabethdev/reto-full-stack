@@ -1,7 +1,12 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import {Link} from 'react-router-dom';
+import AuthContext from '../../context/auth/authContext';
+
 
 const NuevaCuenta = () => {
+ //// alertcontext aqui va
+  const authContext = useContext(AuthContext)
+  const {registrarUsuario} = authContext;
 
   const [usuario, guardarUsuario] = useState({
     nombre: '',
@@ -20,6 +25,14 @@ const NuevaCuenta = () => {
 
   const onSubmit = e => {
     e.preventDefault();
+    console.log('submit form');
+    // validaciones
+
+    registrarUsuario({
+      nombre,
+      email, 
+      password
+    });
   }
 
   return(
@@ -74,7 +87,8 @@ const NuevaCuenta = () => {
           {/* <p className="text-red-500 text-xs italic">Por favor ingrese una contraseña.</p> */}
           </div>
           <div className="flex items-center justify-between">
-          <button className="w-full bg-teal-400 hover:bg-teal-200 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
+          <button className="w-full bg-teal-400 hover:bg-teal-200 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" 
+            type="submit">
             Crear cuenta
           </button>
           </div>    

@@ -1,7 +1,7 @@
 import React, { useReducer } from 'react';
 
-import categoriaContext from './categoriasContext';
-import categoriaReducer from './categoriasReducer';
+import CategoriaContext from './categoriasContext';
+import CategoriaReducer from './categoriasReducer';
 import {OBTENER_CATEGORIAS} from '../../types';
 
 const CategoriaState = props => {
@@ -13,7 +13,7 @@ const CategoriaState = props => {
     categorias : []
   }
 
-  const [state, dispatch] = useReducer(categoriaReducer, initialState)
+  const [state, dispatch] = useReducer(CategoriaReducer, initialState)
 
   const getCategorias = () => {
     dispatch({
@@ -22,13 +22,13 @@ const CategoriaState = props => {
     })
   }
   return(
-    <categoriaContext.Provider
+    <CategoriaContext.Provider
       value={{
         categorias: state.categorias,
         getCategorias
       }}>
       {props.children}
-    </categoriaContext.Provider>
+    </CategoriaContext.Provider>
   )
 }
 
