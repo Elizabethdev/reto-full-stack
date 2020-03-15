@@ -17,7 +17,7 @@ class HeaderImage extends React.Component{
 }
 
 HeaderImage.defaultProps = {
-  title: 'Este es tu titúlo',
+  title: 'Catálogo de libros',
   urlCover: './assets/img/headerimg.jpg',
 };
 

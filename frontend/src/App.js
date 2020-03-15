@@ -13,7 +13,7 @@ import AuthState from './context/auth/authState';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 library.add(fas)
- console.log(process.env.REACT_APP_BACKEND_URL)
+
 function App() {
   return (
     <div className="App">

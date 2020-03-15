@@ -1,5 +1,6 @@
 import React, { useReducer } from 'react';
 import clienteAxios from '../../config/axios';
+import tokenAuth from '../../config/tokenAuth';
 
 import AuthContext from './authContext';
 import AuthReducer from './authReducer';
@@ -27,12 +28,54 @@ const AuthState = props => {
     try {
       const respuesta = await clienteAxios.post('/api/usuarios', datos)
       console.log(respuesta);
-    } catch (error) {
-      console.log(error);
-      
       dispatch({
-          type: REGISTRO_ERROR,
+        type: REGISTRO_EXITOSO,
+        payload: respuesta.data
+      })
 
+      usuarioAutenticado();
+
+    } catch (error) {
+      console.log(error.data);
+      const alerta = {
+        msg: error.response.data.msg,
+        categoria: 'alerta-error'
+      }
+      dispatch({
+        type: REGISTRO_ERROR,
+        payload: alerta
+      })
+    }
+  }
+
+  const usuarioAutenticado = async () => {
+    const token = localStorage.getItem('token');
+    if(token) {
+      tokenAuth(token);
+    }
+    //aqui se puede obtener datos del usuario
+  }
+
+  const iniciarSesion = async datos => {
+    try {
+      const respuesta = await clienteAxios.post('/api/auth', datos)
+      console.log(respuesta);
+      dispatch({
+        type: LOGIN_EXITOSO,
+        payload: respuesta.data
+      })
+
+      usuarioAutenticado();
+      
+    } catch (error) {
+      console.log(error.response.data.msg);
+      const alerta = {
+        msg: error.response.data.msg,
+        categoria: 'alerta-error'
+      }
+      dispatch({
+        type: LOGIN_ERROR,
+        payload: alerta
       })
     }
   }
@@ -40,11 +83,12 @@ const AuthState = props => {
   return(
     <AuthContext.Provider
       value={{
-        toke: state.token,
+        token: state.token,
         autenticado: state.autenticado,
         usuario: state.usuario,
         mensaje: state.mensaje,
-        registrarUsuario
+        registrarUsuario,
+        iniciarSesion
       }}>
       {props.children}
     </AuthContext.Provider>

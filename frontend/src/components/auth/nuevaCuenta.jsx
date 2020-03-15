@@ -1,12 +1,25 @@
-import React, {useState, useContext} from 'react';
+import React, {useState, useContext, useEffect} from 'react';
 import {Link} from 'react-router-dom';
+import AlertaContext from '../../context/alertas/alertaContext';
 import AuthContext from '../../context/auth/authContext';
 
-
-const NuevaCuenta = () => {
+const NuevaCuenta = (props) => {
  //// alertcontext aqui va
+  const alertaContext = useContext(AlertaContext)
+  const {mostrarAlerta} = alertaContext;
+
   const authContext = useContext(AuthContext)
-  const {registrarUsuario} = authContext;
+  const {registrarUsuario, autenticado, mensaje} = authContext;
+
+  useEffect(() => {
+    if(autenticado) {
+      props.history.push('/books');
+    }
+
+    if(mensaje) {
+      mostrarAlerta(mensaje.msg, mensaje.categoria);
+    }
+  }, [mensaje, autenticado, props.history])
 
   const [usuario, guardarUsuario] = useState({
     nombre: '',
