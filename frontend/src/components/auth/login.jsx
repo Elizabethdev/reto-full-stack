@@ -27,7 +27,7 @@ const Login = () => {
         <form onSubmit={onSubmit} className="w-2/3 bg-white shadow-lg rounded px-8 pt-6 pb-8 mb-4 mx-auto max-w-lg">
           <div className="my-4">
             <h1 className="text-center text-teal-400 px-4 font-bold text-xl">Iniciar sesión</h1>
-            <p className="text-center text-gray-600 mb-6 px-4 text-sm">Cree una <Link to={'/crearcuenta'} className="text-blue-700 hover:text-teal-400 underline hover:no-underline">nueva cuenta</Link> o inicie sesión con su correo y contraseña</p>
+            <p className="text-center text-gray-600 mb-6 px-4 text-sm">Cree una <Link to={'/newuser'} className="text-blue-700 hover:text-teal-400 underline hover:no-underline">nueva cuenta</Link> o inicie sesión con su correo y contraseña</p>
           </div>
 
           <div className="mb-6">
