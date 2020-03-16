@@ -3,7 +3,7 @@
 @import "tailwindcss/components";
 
 .alert {
-    @apply border-t-4 rounded-b px-4 py-3 shadow-md absolute;
+    @apply border-t-4 rounded-b px-4 py-3 shadow-md fixed z-50;
     top: 20px;
     right: 20px;
 }

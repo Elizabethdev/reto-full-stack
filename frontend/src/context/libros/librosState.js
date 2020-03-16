@@ -57,6 +57,16 @@ const LibroState = props => {
     }
   }
 
+  const eliminarLibro = async (libro) => {
+    try {
+      const respuesta = await clienteAxios.delete('/api/libros/'+libro._id);
+      getLibros(libro.categoria._id);
+
+    } catch (error) {
+      console.log(error.response.data.msg);
+    }
+  }
+
   return(
     <LibroContext.Provider
       value={{
@@ -65,7 +75,8 @@ const LibroState = props => {
         getLibros,
         nuevoLibro,
         libroActual,
-        editarLibro
+        editarLibro,
+        eliminarLibro
       }}>
       {props.children}
     </LibroContext.Provider>

@@ -8,10 +8,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 const BookCard= (props) => {
 
   const libroContext = useContext(LibroContext);
-  const { libroActual, libroSelected } = libroContext;
+  const { libroActual, libroSelected, eliminarLibro } = libroContext;
 
   const seleccionarLibro = (book) => {
     libroActual(book);
+  }
+
+  const eliminarLibroSelected = (book) => {
+    eliminarLibro(book);
   }
 
   const renderDetalle = (props) =>{
@@ -38,7 +42,7 @@ const BookCard= (props) => {
         <div onClick={() => seleccionarLibro(props.book)} className="absolute rounded-full h-8 w-8 bg-white flex items-center justify-center" style={{top:'20px', right:'10px'}}>
           <FontAwesomeIcon icon={'pen'}   className="text-teal-400"/>
         </div>
-        <div className="absolute rounded-full h-8 w-8 bg-white flex items-center justify-center" style={{top:'60px', right:'10px'}}>
+        <div onClick={() => eliminarLibroSelected(props.book)} className="absolute rounded-full h-8 w-8 bg-white flex items-center justify-center" style={{top:'60px', right:'10px'}}>
           <FontAwesomeIcon icon={'trash'}   className="text-red-400"/>
         </div>
         <div className="w-full h-88 lg:h-80 py-6 px-6 rounded-2xl bg-white flex flex-col">
