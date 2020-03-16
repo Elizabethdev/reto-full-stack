@@ -39,10 +39,10 @@ const CategoriaState = props => {
     }
   }
 
-  const categoriaActual = (categoriaId) => {
+  const categoriaActual = (categoria) => {
       dispatch({
         type: ACTUAL_CATEGORIA,
-        payload: categoriaId
+        payload: categoria
       })
   }
 

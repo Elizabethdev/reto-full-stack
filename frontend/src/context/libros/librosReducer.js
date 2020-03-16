@@ -1,4 +1,4 @@
-import {LIBROS_CATEGORIA} from '../../types';
+import {LIBROS_CATEGORIA, LIBRO_ACTUAL} from '../../types';
 
 export default (state, action) => {
   switch (action.type) {
@@ -6,7 +6,12 @@ export default (state, action) => {
       return{
         ...state,
         libros: action.payload
-      }    
+      }
+    case LIBRO_ACTUAL: 
+      return{
+        ...state,
+        libroSelected: action.payload 
+      }   
     default:
       return state;
   }

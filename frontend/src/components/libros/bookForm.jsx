@@ -3,7 +3,9 @@ import AlertaContext from '../../context/alertas/alertaContext';
 import CategoriaContext from '../../context/categorias/categoriasContext';
 import LibroContext from '../../context/libros/librosContext';
 
-const Bookform = () => {
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+const Bookform = (props) => {
 
   const alertaContext = useContext(AlertaContext)
   const {mostrarAlerta} = alertaContext;
@@ -12,20 +14,20 @@ const Bookform = () => {
   const { categoriaSelected, categorias, categoriaActual } = categoriaContext;
 
   const libroContext = useContext(LibroContext);
-  const { nuevoLibro } = libroContext;
+  const { nuevoLibro, libroActual } = libroContext;
 
   const [libro, guardarLibro] = useState({
-    titulo: '',
-    autor: '',
-    editorial: '',
-    descripcion: '',
-    categoria: categoriaSelected ? categoriaSelected[0]._id : ''
+    titulo: props.libro ? props.libro.titulo : '',
+    autor: props.libro ? props.libro.autor : '',
+    editorial: props.libro ? props.libro.editorial : '',
+    descripcion: props.libro ? props.libro.descripcion : '',
+    categoria: categoriaSelected ? categoriaSelected._id : ''
   });
 
   useEffect(() =>{
     guardarLibro({
       ...libro,
-      categoria : categoriaSelected[0]._id
+      categoria : categoriaSelected._id
     })
   }, [categoriaSelected])
 
@@ -53,6 +55,10 @@ const Bookform = () => {
     });
 
     categoriaActual(categoria);
+  }
+
+  const seleccionarLibro = (book) => {
+    libroActual(book);
   }
 
   const renderSelectOptions = (categories) => {
@@ -84,9 +90,12 @@ const Bookform = () => {
   }
 
   return(
-    <form onSubmit={onSubmit} className="w-full hadow-lg rounded ">
+    <form onSubmit={onSubmit} className="w-full hadow-lg rounded relative">
+      <div onClick={() => seleccionarLibro(null)} className={`absolute rounded-full h-8 w-8 bg-teal-400 flex items-center justify-center ${ props.editando ? 'visible' : 'hidden'}`}  style={{top:'-10px', right:'-10px'}}>
+        <FontAwesomeIcon icon={'times'} className="text-white"/>
+      </div>
       <div className="my-4">
-        <h1 className="text-center text-teal-400 px-4 font-bold text-base">Nuevo libro</h1>
+  <h1 className="text-center text-teal-400 px-4 font-bold text-base">{`${props.editando ? 'Editando libro' : 'Nuevo libro'}`}</h1>
       </div>
       <div className="mb-4">
         <input className="appearance-none bg-transparent  w-full text-sm text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none focus:border-teal-300 border-b" 

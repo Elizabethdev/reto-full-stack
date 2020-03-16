@@ -4,21 +4,21 @@ import clienteAxios from '../../config/axios';
 import LibroContext from './librosContext';
 import LibroReducer from './librosReducer';
 import {
-  OBTENER_CATEGORIAS,
-  LIBROS_CATEGORIA 
+  LIBROS_CATEGORIA,
+  LIBRO_ACTUAL
 } from '../../types';
 
 const LibroState = props => {
   
   const initialState = {
-    libros : []
+    libros : [],
+    libroSelected: null
   }
 
   const [state, dispatch] = useReducer(LibroReducer, initialState)
 
   const getLibros = async (categoriaId) => {
     try {
-      
       const respuesta = await clienteAxios.get('/api/libros/categoria/'+categoriaId+'');
       dispatch({
         type: LIBROS_CATEGORIA,
@@ -40,12 +40,31 @@ const LibroState = props => {
     }
   }
 
+  const libroActual = (libro) => {
+    dispatch({
+      type: LIBRO_ACTUAL,
+      payload: libro
+    })
+  }
+
+  const editarLibro = async libro => {
+    try {
+      const respuesta = await clienteAxios.put('/api/libros', libro)
+      getLibros(libro.categoria);
+
+    } catch (error) {
+      console.log(error.response.data.msg);
+    }
+  }
+
   return(
     <LibroContext.Provider
       value={{
         libros: state.libros,
+        libroSelected: state.libroSelected,
         getLibros,
-        nuevoLibro
+        nuevoLibro,
+        libroActual
       }}>
       {props.children}
     </LibroContext.Provider>

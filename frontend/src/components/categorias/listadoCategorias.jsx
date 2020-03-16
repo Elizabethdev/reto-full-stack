@@ -10,9 +10,9 @@ const ListadoCategorias = (props) => {
   const librosContext = useContext(LibroContext);
   const { getLibros } = librosContext;
 
-  const seleccionarCategoria = (id) => {
-    categoriaActual(id);
-    getLibros(id);
+  const seleccionarCategoria = (data) => {
+    categoriaActual(data);
+    getLibros(data._id);
   }
 
   const renderLi = (items) => {
@@ -22,7 +22,7 @@ const ListadoCategorias = (props) => {
         <li key={data._id} className="py-1 px-4  text-teal-400 hover:text-teal-600 hover:rounded-lg">
           <button 
             type="button" 
-            onClick={() => seleccionarCategoria(data._id)}
+            onClick={() => seleccionarCategoria(data)}
             className="py-1 px-4 text-teal-400 hover:text-teal-600 hover:rounded-lg">
             #{data.nombre}
           </button>
