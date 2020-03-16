@@ -10,7 +10,6 @@ import {
 
 const LibroState = props => {
   
-
   const initialState = {
     libros : []
   }
@@ -22,7 +21,7 @@ const LibroState = props => {
       
       const respuesta = await clienteAxios.get('/api/libros/categoria/'+categoriaId+'');
       dispatch({
-        type: OBTENER_CATEGORIAS,
+        type: LIBROS_CATEGORIA,
         payload: respuesta.data.libros
       })
 
@@ -34,7 +33,7 @@ const LibroState = props => {
   const nuevoLibro = async libro => {
     try {
       const respuesta = await clienteAxios.post('/api/libros', libro)
-      getLibros();
+      getLibros(libro.categoria);
 
     } catch (error) {
       console.log(error.response.data.msg);

@@ -9,13 +9,9 @@ import {
 } from '../../types';
 
 const CategoriaState = props => {
-  const categorias = [
-    {id:'123', nombre: 'todos los libros'},
-    {id:'12', nombre: 'poesia'}
-  ];
   const initialState = {
     categorias : [],
-    categoria: null
+    categoriaSelected: null
   }
 
   const [state, dispatch] = useReducer(CategoriaReducer, initialState)
@@ -54,7 +50,7 @@ const CategoriaState = props => {
     <CategoriaContext.Provider
       value={{
         categorias: state.categorias,
-        categoria: state.categoria,
+        categoriaSelected: state.categoriaSelected,
         getCategorias,
         nuevaCategoria,
         categoriaActual

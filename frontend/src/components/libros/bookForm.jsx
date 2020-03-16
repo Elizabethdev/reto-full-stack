@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react';
+import React, {useState, useContext, useEffect} from 'react';
 import AlertaContext from '../../context/alertas/alertaContext';
 import CategoriaContext from '../../context/categorias/categoriasContext';
 import LibroContext from '../../context/libros/librosContext';
@@ -9,7 +9,7 @@ const Bookform = () => {
   const {mostrarAlerta} = alertaContext;
 
   const categoriaContext = useContext(CategoriaContext);
-  const { categorias } = categoriaContext;
+  const { categoriaSelected, categorias, categoriaActual } = categoriaContext;
 
   const libroContext = useContext(LibroContext);
   const { nuevoLibro } = libroContext;
@@ -19,8 +19,15 @@ const Bookform = () => {
     autor: '',
     editorial: '',
     descripcion: '',
-    categoria: ''
+    categoria: categoriaSelected ? categoriaSelected[0]._id : ''
   });
+
+  useEffect(() =>{
+    guardarLibro({
+      ...libro,
+      categoria : categoriaSelected[0]._id
+    })
+  }, [categoriaSelected])
 
   const {titulo, autor, editorial, descripcion, categoria} = libro;
 
@@ -33,6 +40,10 @@ const Bookform = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
+    if(titulo.trim() === '' || autor.trim() === '' || editorial.trim() === '' || descripcion.trim() === '' || categoria.trim() === '') {
+      mostrarAlerta('Todos los campos son obligatorios', 'alert-error');
+      return;
+    }
     nuevoLibro({
       titulo,
       autor,
@@ -40,16 +51,8 @@ const Bookform = () => {
       descripcion,
       categoria
     });
-  }
 
-  const handleChange = (e) => { 
-    const target = e.target;
-    const value = target.name === 'isGoing' ? target.checked : target.value;
-    const name = target.name;
-
-    this.setState({
-      [name]: value
-    });
+    categoriaActual(categoria);
   }
 
   const renderSelectOptions = (categories) => {
@@ -132,11 +135,12 @@ const Bookform = () => {
         </div>
       </div> 
       <div className="flex items-center justify-between">
-        <button onClick={() => this.props.submitHandler()} className="w-full bg-teal-400 hover:bg-teal-200 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
+        <button className="w-full bg-teal-400 hover:bg-teal-200 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" 
+          type="submit">
           Guardar
-      </button>
-    </div>   
-  </form>             
+        </button>
+      </div>   
+    </form>             
   );
 }
 

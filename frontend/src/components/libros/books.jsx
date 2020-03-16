@@ -1,6 +1,7 @@
 import React, {useContext, useEffect} from 'react';
 import AuthContext from '../../context/auth/authContext';
 import AlertaContext from '../../context/alertas/alertaContext';
+import CategoriaContext from '../../context/categorias/categoriasContext';
 import LibroContext from '../../context/libros/librosContext';
 
 import Header from '../layout/header';
@@ -12,6 +13,9 @@ import Alert from '../ui/alert';
 const Libros = () => {
   const alertaContext = useContext(AlertaContext)
   const {alerta} = alertaContext;
+
+  const categoriaContext = useContext(CategoriaContext);
+  const { categoriaSelected } = categoriaContext;
 
   const librosContext = useContext(LibroContext);
   const { libros } = librosContext;
@@ -49,7 +53,7 @@ const Libros = () => {
           <div className="w-full md:w-9/12 mx-2 bg-white rounded-lg shadow-lg h-full">
             <div className="px-8 py-8">
               <div className="flex flex-wrap justify-center md:justify-start -mx-2">
-                <NewBookCard></NewBookCard>
+                { categoriaSelected ? (<NewBookCard></NewBookCard>) : null}
                 {renderBooks(libros)}
               </div>
             </div>

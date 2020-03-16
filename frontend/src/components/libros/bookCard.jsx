@@ -11,7 +11,7 @@ class BookCard extends React.Component{
       <div className="w-full md:w-6/12 lg:w-3/12 px-2 h-auto  my-2 rounded-2xl ">
         <div className="bg-cover bg-center  shadow-lg rounded-2xl pt-40" style={{backgroundImage: `url("./assets/img/books.jpg")`}}>
           <div className="w-full h-88 lg:h-80 py-6 px-6 rounded-2xl bg-white flex flex-col">
-            <div className="h-8 m-h-full">
+            <div className="h-12 md:h-8 m-h-full">
               <h2 className="text-xl lg:text-xs font-bold">{this.props.book.titulo}</h2>
             </div>
             <span className="text-xl lg:text-xs my-2">{this.props.book.autor}</span>

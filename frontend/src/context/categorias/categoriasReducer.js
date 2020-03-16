@@ -10,7 +10,7 @@ export default (state, action) => {
     case ACTUAL_CATEGORIA:
       return{
         ...state,
-        categoria: state.categorias.filter(categoria => categoria._id === action.payload ) 
+        categoriaSelected: state.categorias.filter(categoria => categoria._id === action.payload ) 
       }   
     default:
       return state;
