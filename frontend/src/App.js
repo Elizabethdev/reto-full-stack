@@ -9,10 +9,19 @@ import './css/tailwind.css';
 import CategoriaState from './context/categorias/categoriasState';
 import AlertaState from './context/alertas/alertaState';
 import AuthState from './context/auth/authState';
+import tokenAuth from './config/tokenAuth';
+import RutaPrivada from './components/ui/RutaPrivada';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 library.add(fas)
+
+//if hay token
+
+const token = localStorage.getItem('token');
+if(token) {
+  tokenAuth(token);
+}
 
 function App() {
   return (
@@ -27,7 +36,7 @@ function App() {
                       <Switch>
                         <Route exact path="/" component={Login} />
                         <Route exact path="/newuser" component={CreateUser} />
-                        <Route exact path="/Books" component={Books} />
+                        <RutaPrivada exact path="/Books" component={Books} />
                       </Switch>
                     </Router>
                 </AuthState>

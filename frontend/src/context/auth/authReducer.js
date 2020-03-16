@@ -14,35 +14,34 @@ export default (state, action) => {
       localStorage.setItem('token', action.payload.token);
       return {
         ...state,
-        autenticado: true, 
-        mensaje: null 
-      }
-    case REGISTRO_ERROR:
-      return {
-        ...state,
-        token: null, 
-        autenticado: null, 
-        mensaje: action.payload 
+        autenticado: true,
+        mensaje: null,
+        cargando: false 
       }
     case OBTENER_USUARIO:
       return{
         ...state,
-        autenticado: null, 
-        mensaje: action.payload
+        autenticado: true,
+        usuario: action.payload,
+        cargando: false
       }
+    case REGISTRO_ERROR:
     case LOGIN_ERROR:
+      localStorage.removeItem('token');
       return{
         ...state,
         token: null, 
         autenticado: null, 
-        mensaje: action.payload 
+        mensaje: action.payload,
+        cargando: false
       }  
     case CERRAR_SESSION:
       return{
         ...state,
         token: null, 
         autenticado: null, 
-        mensaje: null 
+        mensaje: null,
+        cargando: false
       }       
     default:
       return state;
