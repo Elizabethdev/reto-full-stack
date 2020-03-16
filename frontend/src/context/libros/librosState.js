@@ -19,7 +19,7 @@ const LibroState = props => {
 
   const getLibros = async (categoriaId) => {
     try {
-      const respuesta = await clienteAxios.get('/api/libros/categoria/'+categoriaId+'');
+      const respuesta = await clienteAxios.get('/api/libros/categoria/'+categoriaId);
       dispatch({
         type: LIBROS_CATEGORIA,
         payload: respuesta.data.libros
@@ -47,9 +47,9 @@ const LibroState = props => {
     })
   }
 
-  const editarLibro = async libro => {
+  const editarLibro = async (libro, idLibro) => {
     try {
-      const respuesta = await clienteAxios.put('/api/libros', libro)
+      const respuesta = await clienteAxios.put('/api/libros/'+idLibro, libro);
       getLibros(libro.categoria);
 
     } catch (error) {
@@ -64,7 +64,8 @@ const LibroState = props => {
         libroSelected: state.libroSelected,
         getLibros,
         nuevoLibro,
-        libroActual
+        libroActual,
+        editarLibro
       }}>
       {props.children}
     </LibroContext.Provider>

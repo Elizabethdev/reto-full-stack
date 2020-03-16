@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react';
+import React, {useContext} from 'react';
 import LibroContext from '../../context/libros/librosContext';
 
 import BookForm from './bookForm'
@@ -42,7 +42,7 @@ const BookCard= (props) => {
             <FontAwesomeIcon icon={'trash'}   className="text-red-400"/>
           </div>
           <div className="w-full h-88 lg:h-80 py-6 px-6 rounded-2xl bg-white flex flex-col">
-            { libroSelected && libroSelected._id == props.book._id ? (<BookForm editando libro={libroSelected}></BookForm>) : (
+            { libroSelected && libroSelected._id === props.book._id ? (<BookForm editando libro={libroSelected}></BookForm>) : (
               renderDetalle(props))}
           </div>
         </div>

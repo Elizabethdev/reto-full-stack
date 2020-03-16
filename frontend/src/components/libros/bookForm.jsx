@@ -14,14 +14,14 @@ const Bookform = (props) => {
   const { categoriaSelected, categorias, categoriaActual } = categoriaContext;
 
   const libroContext = useContext(LibroContext);
-  const { nuevoLibro, libroActual } = libroContext;
+  const { nuevoLibro, libroActual, editarLibro, libroSelected } = libroContext;
 
   const [libro, guardarLibro] = useState({
     titulo: props.libro ? props.libro.titulo : '',
     autor: props.libro ? props.libro.autor : '',
     editorial: props.libro ? props.libro.editorial : '',
     descripcion: props.libro ? props.libro.descripcion : '',
-    categoria: categoriaSelected ? categoriaSelected._id : ''
+    categoria: props.libro ? props.libro.categoria._id : 'll'
   });
 
   useEffect(() =>{
@@ -46,15 +46,27 @@ const Bookform = (props) => {
       mostrarAlerta('Todos los campos son obligatorios', 'alert-error');
       return;
     }
-    nuevoLibro({
-      titulo,
-      autor,
-      editorial,
-      descripcion,
-      categoria
-    });
+    if(props.editando) {
+      editarLibro({
+        titulo,
+        autor,
+        editorial,
+        descripcion,
+        categoria
+      }, libroSelected._id);
 
-    categoriaActual(categoria);
+      seleccionarLibro(null);
+
+    } else {
+      nuevoLibro({
+        titulo,
+        autor,
+        editorial,
+        descripcion,
+        categoria
+      });
+    }
+
   }
 
   const seleccionarLibro = (book) => {
@@ -95,7 +107,7 @@ const Bookform = (props) => {
         <FontAwesomeIcon icon={'times'} className="text-white"/>
       </div>
       <div className="my-4">
-  <h1 className="text-center text-teal-400 px-4 font-bold text-base">{`${props.editando ? 'Editando libro' : 'Nuevo libro'}`}</h1>
+        <h1 className="text-center text-teal-400 px-4 font-bold text-base">{`${props.editando ? 'Editando libro' : 'Nuevo libro'}`}</h1>
       </div>
       <div className="mb-4">
         <input className="appearance-none bg-transparent  w-full text-sm text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none focus:border-teal-300 border-b" 
