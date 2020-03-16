@@ -11,7 +11,7 @@ exports.crearCategoria = async (req, res) => {
   const {nombre} = req.body;
 
   try {
-    let categoria = await Categoria.findOne({nombre});
+    let categoria = await Categoria.findOne({nombres});
 
     if(categoria) {
       return res.status(400).json({msg: 'La categoria ya existe'});
@@ -23,7 +23,7 @@ exports.crearCategoria = async (req, res) => {
 
   } catch (error) {
     console.log(error);
-    res.status(500).send('hubo un error');
+    res.status(500).json({msg: 'Hubo un error'});
   }
 
 }
@@ -34,7 +34,7 @@ exports.obtenerCategorias = async (req, res) => {
     res.json({categorias});
   } catch (error) {
     console.log(error);
-    res.status(500).send('hubo un error');
+    res.status(500).json({msg:'hubo un error'});
   }
 }
 
@@ -64,7 +64,7 @@ exports.actualizarCategoria = async (req, res) => {
 
   } catch (error) {
     console.log(error);
-    res.status(500).send('Error en el servidor');
+    res.status(500).json({msg:'Error en el servidor'});
   }
 }
 
@@ -81,6 +81,6 @@ exports.eliminarCategoria = async (req, res) => {
 
   } catch (error) {
     console.log(error);
-    res.status(500).send('Error en el servidor');
+    res.status(500).json({msg: 'Error en el servidor'});
   }
 }

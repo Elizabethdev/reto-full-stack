@@ -39,7 +39,6 @@ exports.authUser = async (req, res) => {
     });
 
 	} catch (error) {
-    console.log(error);
     res.status(500).json({msg: 'Hubo un error'});
 	}
 }

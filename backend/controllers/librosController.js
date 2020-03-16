@@ -24,7 +24,7 @@ exports.crearLibro = async (req, res) => {
 
   } catch (error) {
     console.log(error);
-    res.status(500).send('hubo un error');
+    res.status(500).json({msg: 'hubo un error'});
   }
 
 }
@@ -35,7 +35,7 @@ exports.obtenerLibrosTodos = async (req, res) => {
     res.json({libros});
   } catch (error) {
     console.log(error);
-    res.status(500).send('hubo un error');
+    res.status(500).json({msg: 'hubo un error'});
   }
 }
 
@@ -54,7 +54,7 @@ exports.obtenerLibrosCategoria = async (req, res) => {
 
   } catch (error) {
     console.log(error);
-    res.status(500).send('hubo un error');
+    res.status(500).json({msg: 'hubo un error'});
   }
 }
 
@@ -85,7 +85,7 @@ exports.actualizarLibro = async (req, res) => {
 
   } catch (error) {
     console.log(error);
-    res.status(500).send('Error en el servidor');
+    res.status(500).json({msg: 'Error en el servidor'});
   }
 }
 
@@ -102,6 +102,6 @@ exports.eliminarLibro = async (req, res) => {
 
   } catch (error) {
     console.log(error);
-    res.status(500).send('Error en el servidor');
+    res.status(500).json({msg: 'Error en el servidor'});
   }
 }

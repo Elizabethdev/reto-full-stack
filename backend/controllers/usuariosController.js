@@ -44,6 +44,6 @@ exports.crearUsuario = async (req, res) => {
 
   } catch (error) {
     console.log(error);
-    res.status(500).send('hubo un error');
+    res.status(500).json({msg: 'hubo un error'});
   }
 }
