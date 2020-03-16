@@ -10,7 +10,7 @@ class ListadoCategorias extends React.Component{
     let elements = [];
     if(items){
       elements = items.map((data) =>
-        <li key={data.id} className="py-1 px-4  text-teal-400 hover:text-teal-600 hover:rounded-lg">
+        <li key={data._id} className="py-1 px-4  text-teal-400 hover:text-teal-600 hover:rounded-lg">
           <a className="text-sm font-bold" href="#">#{data.nombre}</a>
           {/* <button 
             type="button" 

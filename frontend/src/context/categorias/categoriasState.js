@@ -1,8 +1,12 @@
 import React, { useReducer } from 'react';
+import clienteAxios from '../../config/axios';
 
 import CategoriaContext from './categoriasContext';
 import CategoriaReducer from './categoriasReducer';
-import {OBTENER_CATEGORIAS} from '../../types';
+import {
+  OBTENER_CATEGORIAS, 
+  NUEVA_CATEGORIA
+} from '../../types';
 
 const CategoriaState = props => {
   const categorias = [
@@ -15,17 +19,35 @@ const CategoriaState = props => {
 
   const [state, dispatch] = useReducer(CategoriaReducer, initialState)
 
-  const getCategorias = () => {
-    dispatch({
-      type: OBTENER_CATEGORIAS,
-      payload: categorias
-    })
+  const getCategorias = async () => {
+    try {
+      const respuesta = await clienteAxios.get('/api/categorias')
+      dispatch({
+        type: OBTENER_CATEGORIAS,
+        payload: respuesta.data.categorias
+      })
+
+    } catch (error) {
+      console.log(error.response.data.msg);
+    }
   }
+
+  const nuevaCategoria = async categoria => {
+    try {
+      const respuesta = await clienteAxios.post('/api/categorias', categoria)
+      getCategorias();
+
+    } catch (error) {
+      console.log(error.response.data.msg);
+    }
+  }
+
   return(
     <CategoriaContext.Provider
       value={{
         categorias: state.categorias,
-        getCategorias
+        getCategorias,
+        nuevaCategoria
       }}>
       {props.children}
     </CategoriaContext.Provider>

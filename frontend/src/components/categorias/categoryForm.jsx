@@ -1,4 +1,5 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
+import CategoriaContext from '../../context/categorias/categoriasContext';
 
 const CategoryForm = () => {
   const [categoria, guardarCategoria] = useState({
@@ -14,8 +15,15 @@ const CategoryForm = () => {
     })
   }
 
+  const categoriaContext = useContext(CategoriaContext);
+  const { nuevaCategoria } = categoriaContext;
+
   const onSubmitCategoria = e => {
     e.preventDefault();
+    nuevaCategoria({nombre});
+    guardarCategoria({
+      nombre: ''
+    })
   }
 
   return(
@@ -28,7 +36,9 @@ const CategoryForm = () => {
           value={nombre}
           onChange={onChangeCategoria}
           placeholder="Categoría" />
-        <button className="flex-shrink-0 bg-teal-400 hover:bg-teal-700 border-teal-400 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 mx-2" type="button">
+        <button className="flex-shrink-0 bg-teal-400 hover:bg-teal-700 border-teal-400 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 mx-2" 
+          type="submit"
+        >
           Guardar
         </button>
       </div>
