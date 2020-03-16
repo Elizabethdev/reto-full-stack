@@ -25,14 +25,15 @@ const Sidebar = () => {
           <PlusMinusButton iconShow='bars' iconHide="times" onChange={plusMinusButtonHandler}></PlusMinusButton>
         </div>
         <div className={` lg:block py-4 px-4 text-base text-center ${ isCategoryFormVisible ? "block" : " hidden"}`}>
-        <PlusMinusButton onChange={plusMinusButtonHandler}></PlusMinusButton>
-            <div className={`h-auto ${ isCategoryFormVisible ? "fadeIn" : " fadeOut"}`}>
-              <div className={`${ isCategoryFormVisible ? "h-full visible" : "h-0 invisible"}`}>
-                <CategoryForm></CategoryForm>
-              </div>
+          <div className="hidden lg:block">
+            <PlusMinusButton onChange={plusMinusButtonHandler}></PlusMinusButton>
+          </div> 
+          <div className={`h-auto ${ isCategoryFormVisible ? "fadeIn" : " fadeOut"}`}>
+            <div className={`${ isCategoryFormVisible ? "h-full visible" : "h-0 invisible"}`}>
+              <CategoryForm></CategoryForm>
             </div>
+          </div>
         </div>
-          
           
         <div  className={` lg:block ${ isCategoryFormVisible ? "block" : " hidden"}`}>
           <ListadoCategorias items={categorias}></ListadoCategorias>

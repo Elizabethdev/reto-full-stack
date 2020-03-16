@@ -32,22 +32,22 @@ const BookCard= (props) => {
     );
   }
 
-		return(
-      <div className="w-full md:w-6/12 lg:w-3/12 px-2 h-auto  my-2 rounded-2xl ">
-        <div className="bg-cover bg-center  shadow-lg rounded-2xl pt-40 relative w-full" style={{backgroundImage: `url("./assets/img/books.jpg")`}}>
-          <div onClick={() => seleccionarLibro(props.book)} className="absolute rounded-full h-8 w-8 bg-white flex items-center justify-center" style={{top:'20px', right:'10px'}}>
-            <FontAwesomeIcon icon={'pen'}   className="text-teal-400"/>
-          </div>
-          <div className="absolute rounded-full h-8 w-8 bg-white flex items-center justify-center" style={{top:'60px', right:'10px'}}>
-            <FontAwesomeIcon icon={'trash'}   className="text-red-400"/>
-          </div>
-          <div className="w-full h-88 lg:h-80 py-6 px-6 rounded-2xl bg-white flex flex-col">
-            { libroSelected && libroSelected._id === props.book._id ? (<BookForm editando libro={libroSelected}></BookForm>) : (
-              renderDetalle(props))}
-          </div>
+  return(
+    <div className="w-full md:w-6/12 lg:w-3/12 px-2 h-auto  my-2 rounded-2xl ">
+      <div className="bg-cover bg-center  shadow-lg rounded-2xl pt-40 relative w-full" style={{backgroundImage: `url("./assets/img/books.jpg")`}}>
+        <div onClick={() => seleccionarLibro(props.book)} className="absolute rounded-full h-8 w-8 bg-white flex items-center justify-center" style={{top:'20px', right:'10px'}}>
+          <FontAwesomeIcon icon={'pen'}   className="text-teal-400"/>
+        </div>
+        <div className="absolute rounded-full h-8 w-8 bg-white flex items-center justify-center" style={{top:'60px', right:'10px'}}>
+          <FontAwesomeIcon icon={'trash'}   className="text-red-400"/>
+        </div>
+        <div className="w-full h-88 lg:h-80 py-6 px-6 rounded-2xl bg-white flex flex-col">
+          { libroSelected && libroSelected._id === props.book._id ? (<BookForm editando libro={libroSelected}></BookForm>) : (
+            renderDetalle(props))}
         </div>
       </div>
-		);
+    </div>
+  );
 };
 
 BookCard.defaultProps = {
