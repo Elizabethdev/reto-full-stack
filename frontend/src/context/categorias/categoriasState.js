@@ -5,7 +5,7 @@ import CategoriaContext from './categoriasContext';
 import CategoriaReducer from './categoriasReducer';
 import {
   OBTENER_CATEGORIAS, 
-  NUEVA_CATEGORIA
+  ACTUAL_CATEGORIA,
 } from '../../types';
 
 const CategoriaState = props => {
@@ -14,7 +14,8 @@ const CategoriaState = props => {
     {id:'12', nombre: 'poesia'}
   ];
   const initialState = {
-    categorias : []
+    categorias : [],
+    categoria: null
   }
 
   const [state, dispatch] = useReducer(CategoriaReducer, initialState)
@@ -42,10 +43,23 @@ const CategoriaState = props => {
     }
   }
 
+  const getCategoriaActual = () => {
+    try {
+      // const respuesta = await clienteAxios.get('/api/categorias')
+      dispatch({
+        type: ACTUAL_CATEGORIA,
+      })
+
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   return(
     <CategoriaContext.Provider
       value={{
         categorias: state.categorias,
+        categoria: state.categoria,
         getCategorias,
         nuevaCategoria
       }}>

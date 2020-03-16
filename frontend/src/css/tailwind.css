@@ -606,6 +606,26 @@ video {
   }
 }
 
+.alert {
+  border-top-width: 4px;
+  border-bottom-right-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.alert.alert-error{
+  border-color: #f56565;
+  background-color: #fff5f5;
+  color: #742a2a;
+}
+
 .sr-only {
   position: absolute;
   width: 1px;
@@ -3006,6 +3026,10 @@ video {
   border-radius: 9999px;
 }
 
+.rounded-2xl {
+  border-radius: 2rem;
+}
+
 .rounded-t-none {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
@@ -3126,6 +3150,26 @@ video {
   border-bottom-left-radius: 9999px;
 }
 
+.rounded-t-2xl {
+  border-top-left-radius: 2rem;
+  border-top-right-radius: 2rem;
+}
+
+.rounded-r-2xl {
+  border-top-right-radius: 2rem;
+  border-bottom-right-radius: 2rem;
+}
+
+.rounded-b-2xl {
+  border-bottom-right-radius: 2rem;
+  border-bottom-left-radius: 2rem;
+}
+
+.rounded-l-2xl {
+  border-top-left-radius: 2rem;
+  border-bottom-left-radius: 2rem;
+}
+
 .rounded-tl-none {
   border-top-left-radius: 0;
 }
@@ -3220,6 +3264,22 @@ video {
 
 .rounded-bl-full {
   border-bottom-left-radius: 9999px;
+}
+
+.rounded-tl-2xl {
+  border-top-left-radius: 2rem;
+}
+
+.rounded-tr-2xl {
+  border-top-right-radius: 2rem;
+}
+
+.rounded-br-2xl {
+  border-bottom-right-radius: 2rem;
+}
+
+.rounded-bl-2xl {
+  border-bottom-left-radius: 2rem;
 }
 
 .border-solid {
@@ -13313,6 +13373,10 @@ video {
     border-radius: 9999px;
   }
 
+  .sm\:rounded-2xl {
+    border-radius: 2rem;
+  }
+
   .sm\:rounded-t-none {
     border-top-left-radius: 0;
     border-top-right-radius: 0;
@@ -13433,6 +13497,26 @@ video {
     border-bottom-left-radius: 9999px;
   }
 
+  .sm\:rounded-t-2xl {
+    border-top-left-radius: 2rem;
+    border-top-right-radius: 2rem;
+  }
+
+  .sm\:rounded-r-2xl {
+    border-top-right-radius: 2rem;
+    border-bottom-right-radius: 2rem;
+  }
+
+  .sm\:rounded-b-2xl {
+    border-bottom-right-radius: 2rem;
+    border-bottom-left-radius: 2rem;
+  }
+
+  .sm\:rounded-l-2xl {
+    border-top-left-radius: 2rem;
+    border-bottom-left-radius: 2rem;
+  }
+
   .sm\:rounded-tl-none {
     border-top-left-radius: 0;
   }
@@ -13527,6 +13611,22 @@ video {
 
   .sm\:rounded-bl-full {
     border-bottom-left-radius: 9999px;
+  }
+
+  .sm\:rounded-tl-2xl {
+    border-top-left-radius: 2rem;
+  }
+
+  .sm\:rounded-tr-2xl {
+    border-top-right-radius: 2rem;
+  }
+
+  .sm\:rounded-br-2xl {
+    border-bottom-right-radius: 2rem;
+  }
+
+  .sm\:rounded-bl-2xl {
+    border-bottom-left-radius: 2rem;
   }
 
   .sm\:border-solid {
@@ -23621,6 +23721,10 @@ video {
     border-radius: 9999px;
   }
 
+  .md\:rounded-2xl {
+    border-radius: 2rem;
+  }
+
   .md\:rounded-t-none {
     border-top-left-radius: 0;
     border-top-right-radius: 0;
@@ -23741,6 +23845,26 @@ video {
     border-bottom-left-radius: 9999px;
   }
 
+  .md\:rounded-t-2xl {
+    border-top-left-radius: 2rem;
+    border-top-right-radius: 2rem;
+  }
+
+  .md\:rounded-r-2xl {
+    border-top-right-radius: 2rem;
+    border-bottom-right-radius: 2rem;
+  }
+
+  .md\:rounded-b-2xl {
+    border-bottom-right-radius: 2rem;
+    border-bottom-left-radius: 2rem;
+  }
+
+  .md\:rounded-l-2xl {
+    border-top-left-radius: 2rem;
+    border-bottom-left-radius: 2rem;
+  }
+
   .md\:rounded-tl-none {
     border-top-left-radius: 0;
   }
@@ -23835,6 +23959,22 @@ video {
 
   .md\:rounded-bl-full {
     border-bottom-left-radius: 9999px;
+  }
+
+  .md\:rounded-tl-2xl {
+    border-top-left-radius: 2rem;
+  }
+
+  .md\:rounded-tr-2xl {
+    border-top-right-radius: 2rem;
+  }
+
+  .md\:rounded-br-2xl {
+    border-bottom-right-radius: 2rem;
+  }
+
+  .md\:rounded-bl-2xl {
+    border-bottom-left-radius: 2rem;
   }
 
   .md\:border-solid {
@@ -33929,6 +34069,10 @@ video {
     border-radius: 9999px;
   }
 
+  .lg\:rounded-2xl {
+    border-radius: 2rem;
+  }
+
   .lg\:rounded-t-none {
     border-top-left-radius: 0;
     border-top-right-radius: 0;
@@ -34049,6 +34193,26 @@ video {
     border-bottom-left-radius: 9999px;
   }
 
+  .lg\:rounded-t-2xl {
+    border-top-left-radius: 2rem;
+    border-top-right-radius: 2rem;
+  }
+
+  .lg\:rounded-r-2xl {
+    border-top-right-radius: 2rem;
+    border-bottom-right-radius: 2rem;
+  }
+
+  .lg\:rounded-b-2xl {
+    border-bottom-right-radius: 2rem;
+    border-bottom-left-radius: 2rem;
+  }
+
+  .lg\:rounded-l-2xl {
+    border-top-left-radius: 2rem;
+    border-bottom-left-radius: 2rem;
+  }
+
   .lg\:rounded-tl-none {
     border-top-left-radius: 0;
   }
@@ -34143,6 +34307,22 @@ video {
 
   .lg\:rounded-bl-full {
     border-bottom-left-radius: 9999px;
+  }
+
+  .lg\:rounded-tl-2xl {
+    border-top-left-radius: 2rem;
+  }
+
+  .lg\:rounded-tr-2xl {
+    border-top-right-radius: 2rem;
+  }
+
+  .lg\:rounded-br-2xl {
+    border-bottom-right-radius: 2rem;
+  }
+
+  .lg\:rounded-bl-2xl {
+    border-bottom-left-radius: 2rem;
   }
 
   .lg\:border-solid {
@@ -44237,6 +44417,10 @@ video {
     border-radius: 9999px;
   }
 
+  .xl\:rounded-2xl {
+    border-radius: 2rem;
+  }
+
   .xl\:rounded-t-none {
     border-top-left-radius: 0;
     border-top-right-radius: 0;
@@ -44357,6 +44541,26 @@ video {
     border-bottom-left-radius: 9999px;
   }
 
+  .xl\:rounded-t-2xl {
+    border-top-left-radius: 2rem;
+    border-top-right-radius: 2rem;
+  }
+
+  .xl\:rounded-r-2xl {
+    border-top-right-radius: 2rem;
+    border-bottom-right-radius: 2rem;
+  }
+
+  .xl\:rounded-b-2xl {
+    border-bottom-right-radius: 2rem;
+    border-bottom-left-radius: 2rem;
+  }
+
+  .xl\:rounded-l-2xl {
+    border-top-left-radius: 2rem;
+    border-bottom-left-radius: 2rem;
+  }
+
   .xl\:rounded-tl-none {
     border-top-left-radius: 0;
   }
@@ -44451,6 +44655,22 @@ video {
 
   .xl\:rounded-bl-full {
     border-bottom-left-radius: 9999px;
+  }
+
+  .xl\:rounded-tl-2xl {
+    border-top-left-radius: 2rem;
+  }
+
+  .xl\:rounded-tr-2xl {
+    border-top-right-radius: 2rem;
+  }
+
+  .xl\:rounded-br-2xl {
+    border-bottom-right-radius: 2rem;
+  }
+
+  .xl\:rounded-bl-2xl {
+    border-bottom-left-radius: 2rem;
   }
 
   .xl\:border-solid {

@@ -2,4 +2,14 @@
 
 @import "tailwindcss/components";
 
+.alert {
+    @apply border-t-4 rounded-b px-4 py-3 shadow-md absolute;
+    top: 20px;
+    right: 20px;
+}
+  
+.alert.alert-error{
+    @apply border-red-500 bg-red-100 text-red-900;
+}
+
 @import "tailwindcss/utilities";

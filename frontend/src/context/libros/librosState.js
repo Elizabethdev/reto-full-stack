@@ -30,9 +30,9 @@ const LibroState = props => {
     }
   }
 
-  const nuevoLibro = async categoria => {
+  const nuevoLibro = async libro => {
     try {
-      const respuesta = await clienteAxios.post('/api/categorias', categoria)
+      const respuesta = await clienteAxios.post('/api/libros', libro)
       getLibros();
 
     } catch (error) {
@@ -43,13 +43,13 @@ const LibroState = props => {
   return(
     <LibroContext.Provider
       value={{
-        categorias: state.categorias,
+        libros: state.libros,
         getLibros,
-        nuevaLibro
+        nuevoLibro
       }}>
       {props.children}
     </LibroContext.Provider>
   )
 }
 
-export default CategoriaState;
+export default LibroState;

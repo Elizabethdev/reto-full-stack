@@ -17,10 +17,14 @@ class PlusMinusButton extends React.Component{
 
 	render(){
 		return(
-      <button onClick={() => this.clickHandler()} className="font-bold text-teal-400"><FontAwesomeIcon icon={`${ this.state.show ? "minus-square" : "plus-square"}`}   size="2x" className="mx-2"/></button>
+      <button onClick={() => this.clickHandler()} className="font-bold text-teal-400"><FontAwesomeIcon icon={`${ this.state.show ? this.props.iconHide : this.props.iconShow}`}   size="2x" className="mx-2"/></button>
 		);
 	}
-}
-;
+};
+
+PlusMinusButton.defaultProps = {
+  iconShow: 'plus-square',
+  iconHide: 'minus-square',
+};
 
 export default PlusMinusButton;

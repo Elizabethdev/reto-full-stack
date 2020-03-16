@@ -5,7 +5,7 @@ export default (state, action) => {
     case OBTENER_CATEGORIAS:
       return{
         ...state,
-        categorias: action.payload
+        libros: action.payload
       }    
     default:
       return state;

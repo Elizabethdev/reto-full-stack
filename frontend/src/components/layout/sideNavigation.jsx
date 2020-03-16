@@ -19,20 +19,26 @@ const Sidebar = () => {
   }, [])
 
   return(
-    <div className="flex px-2 py-6">
-      <div className="w-3/12 mx-2 bg-white rounded-lg shadow-lg">
-        <div className="py-4 px-4 text-base text-center">
-          <PlusMinusButton onChange={plusMinusButtonHandler}></PlusMinusButton>
-          <div className={`h-auto ${ isCategoryFormVisible ? "fadeIn" : " fadeOut"}`}>
-            <div className={`${ isCategoryFormVisible ? "h-full visible" : "h-0 invisible"}`}>
-              <CategoryForm></CategoryForm>
-            </div>
-          </div>
+    
+      <div className="w-full md:w-3/12 mx-2 my-4 md:my-0 bg-white rounded-lg shadow-lg">
+        <div className="block lg:hidden py-4 px-4 text-base text-center">
+          <PlusMinusButton iconShow='bars' iconHide="times" onChange={plusMinusButtonHandler}></PlusMinusButton>
         </div>
-
-        <ListadoCategorias items={categorias}></ListadoCategorias>
+        <div className={` lg:block py-4 px-4 text-base text-center ${ isCategoryFormVisible ? "block" : " hidden"}`}>
+        <PlusMinusButton onChange={plusMinusButtonHandler}></PlusMinusButton>
+            <div className={`h-auto ${ isCategoryFormVisible ? "fadeIn" : " fadeOut"}`}>
+              <div className={`${ isCategoryFormVisible ? "h-full visible" : "h-0 invisible"}`}>
+                <CategoryForm></CategoryForm>
+              </div>
+            </div>
+        </div>
+          
+          
+        <div  className={` lg:block ${ isCategoryFormVisible ? "block" : " hidden"}`}>
+          <ListadoCategorias items={categorias}></ListadoCategorias>
+        </div>
       </div>
-    </div>
+      
   );
 }
 

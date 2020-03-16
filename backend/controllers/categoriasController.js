@@ -11,7 +11,7 @@ exports.crearCategoria = async (req, res) => {
   const {nombre} = req.body;
 
   try {
-    let categoria = await Categoria.findOne({nombres});
+    let categoria = await Categoria.findOne({nombre});
 
     if(categoria) {
       return res.status(400).json({msg: 'La categoria ya existe'});

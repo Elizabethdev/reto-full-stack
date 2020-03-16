@@ -1,7 +1,14 @@
 import React, {useState, useContext} from 'react';
+import AlertaContext from '../../context/alertas/alertaContext';
 import CategoriaContext from '../../context/categorias/categoriasContext';
 
 const CategoryForm = () => {
+  const alertaContext = useContext(AlertaContext)
+  const {mostrarAlerta} = alertaContext;
+
+  const categoriaContext = useContext(CategoriaContext);
+  const { nuevaCategoria } = categoriaContext;
+
   const [categoria, guardarCategoria] = useState({
     nombre: ''
   });
@@ -15,11 +22,12 @@ const CategoryForm = () => {
     })
   }
 
-  const categoriaContext = useContext(CategoriaContext);
-  const { nuevaCategoria } = categoriaContext;
-
   const onSubmitCategoria = e => {
     e.preventDefault();
+    if(nombre.trim() === '') {
+      mostrarAlerta('Escribe una categoria', 'alerta-error');
+      return;
+    }
     nuevaCategoria({nombre});
     guardarCategoria({
       nombre: ''
