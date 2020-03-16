@@ -3,9 +3,11 @@ import {Link} from 'react-router-dom';
 import AlertaContext from '../../context/alertas/alertaContext';
 import AuthContext from '../../context/auth/authContext';
 
+import Alert from '../ui/alert';
+
 const Login = (props) => {
   const alertaContext = useContext(AlertaContext)
-  const {mostrarAlerta} = alertaContext;
+  const {mostrarAlerta, alerta} = alertaContext;
 
   const authContext = useContext(AuthContext)
   const {iniciarSesion, autenticado, mensaje} = authContext;
@@ -37,7 +39,8 @@ const Login = (props) => {
   const onSubmit = e => {
     e.preventDefault();
     if(email.trim() === '' || password.trim() === '') {
-      mostrarAlerta('Todos los campos son obligatorios', 'alerta-error');
+      mostrarAlerta('Todos los campos son obligatorios', 'alert-error');
+      return;
     }
     iniciarSesion({
       email, 
@@ -47,6 +50,7 @@ const Login = (props) => {
 
   return(
     <div className="flex flex-row h-screen">
+      { alerta ? (<Alert alert={alerta}></Alert>) : null}
       <div className="w-full flex items-center bg-teal-400  bg-cover bg-center" style={{backgroundImage: `url("./assets/img/libros.jpg")`}} >
         <form onSubmit={onSubmit} className="w-2/3 bg-white shadow-lg rounded px-8 pt-6 pb-8 mb-4 mx-auto max-w-lg">
           <div className="my-4">

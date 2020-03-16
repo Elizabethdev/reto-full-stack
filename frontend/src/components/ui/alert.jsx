@@ -8,12 +8,12 @@ class Alert extends React.Component{
 
 	render(){
 		return(
-      <div className={` alert ${ this.props.alert.type}`}  role="alert">
+      <div className={` alert ${ this.props.alert.categoria}`}  role="alert">
         <div className="flex">
           <div className="py-1"></div>
           <div>
-            <p className="font-bold">{this.props.alert.titulo}</p>
-            <p className="text-sm">{this.props.alert.msj}</p>
+            <p className="font-bold">Alerta</p>
+            <p className="text-sm">{this.props.alert.msg}</p>
           </div>
         </div>
       </div>
@@ -23,9 +23,8 @@ class Alert extends React.Component{
 
 Alert.defaultProps = {
   alert: {
-    titulo: 'Título de error',
-    msj: 'Este es un mensaje de error que puedes configurar',
-    type: 'alert-error',
+    msg: 'Este es un mensaje de error que puedes configurar',
+    categoria: 'alert-error',
   }
 };
 

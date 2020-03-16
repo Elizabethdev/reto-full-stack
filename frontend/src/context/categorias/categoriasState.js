@@ -43,16 +43,11 @@ const CategoriaState = props => {
     }
   }
 
-  const getCategoriaActual = () => {
-    try {
-      // const respuesta = await clienteAxios.get('/api/categorias')
+  const categoriaActual = (categoriaId) => {
       dispatch({
         type: ACTUAL_CATEGORIA,
+        payload: categoriaId
       })
-
-    } catch (error) {
-      console.log(error);
-    }
   }
 
   return(
@@ -61,7 +56,8 @@ const CategoriaState = props => {
         categorias: state.categorias,
         categoria: state.categoria,
         getCategorias,
-        nuevaCategoria
+        nuevaCategoria,
+        categoriaActual
       }}>
       {props.children}
     </CategoriaContext.Provider>

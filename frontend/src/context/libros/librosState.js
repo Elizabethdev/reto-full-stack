@@ -4,22 +4,23 @@ import clienteAxios from '../../config/axios';
 import LibroContext from './librosContext';
 import LibroReducer from './librosReducer';
 import {
-  OBTENER_CATEGORIAS, 
+  OBTENER_CATEGORIAS,
+  LIBROS_CATEGORIA 
 } from '../../types';
 
 const LibroState = props => {
-  const categoria = {
-    "categoria": "5e6ab8b4cdf0a612bcd3fb15"
-  };
+  
+
   const initialState = {
     libros : []
   }
 
   const [state, dispatch] = useReducer(LibroReducer, initialState)
 
-  const getLibros = async () => {
+  const getLibros = async (categoriaId) => {
     try {
-      const respuesta = await clienteAxios.get('/api/libros/categoria')
+      
+      const respuesta = await clienteAxios.get('/api/libros/categoria/'+categoriaId+'');
       dispatch({
         type: OBTENER_CATEGORIAS,
         payload: respuesta.data.libros

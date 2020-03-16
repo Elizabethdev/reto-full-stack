@@ -40,8 +40,7 @@ exports.obtenerLibrosTodos = async (req, res) => {
 }
 
 exports.obtenerLibrosCategoria = async (req, res) => {
-  const {categoria} = req.body;
-  
+  const {categoria} = req.params;
   try {
     let existeCategoria = await Categoria.findById(categoria);
 

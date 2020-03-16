@@ -31,7 +31,7 @@ exports.authUser = async (req, res) => {
     };
 
     jwt.sign(payload, process.env.FIRMA, {
-      expiresIn: 3600 //1 hora
+      expiresIn: 36000 //duracion del token en seg.
     }, (error, token) => {
       if(error) throw error;
 

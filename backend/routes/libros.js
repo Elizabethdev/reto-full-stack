@@ -21,7 +21,7 @@ router.get('/',
 	libroController.obtenerLibrosTodos
 )
 
-router.get('/categoria',
+router.get('/categoria/:categoria',
 	auth,
 	libroController.obtenerLibrosCategoria
 )

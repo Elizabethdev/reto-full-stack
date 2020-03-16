@@ -25,7 +25,7 @@ const CategoryForm = () => {
   const onSubmitCategoria = e => {
     e.preventDefault();
     if(nombre.trim() === '') {
-      mostrarAlerta('Escribe una categoria', 'alerta-error');
+      mostrarAlerta('Escribe una categoria', 'alert-error');
       return;
     }
     nuevaCategoria({nombre});

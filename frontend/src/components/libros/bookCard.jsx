@@ -20,7 +20,7 @@ class BookCard extends React.Component{
             </div>
             <div className="h-12 my-4">
               <p className="text-xl lg:text-xs font-bold">{this.props.book.editorial}</p>
-              <span className="text-xl lg:text-xs text-teal-400">#{this.props.book.categoria}</span>
+              <span className="text-xl lg:text-xs text-teal-400">#{this.props.book.categoria.nombre}</span>
             </div>
           </div>
         </div>

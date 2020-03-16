@@ -1,35 +1,42 @@
-import React from 'react';
+import React, {useState, useContext} from 'react';
+import CategoriaContext from '../../context/categorias/categoriasContext';
+import LibroContext from '../../context/libros/librosContext';
 
-class ListadoCategorias extends React.Component{
+const ListadoCategorias = (props) => {
 
-  constructor(props) {
-    super(props);
+  const categoriaContext = useContext(CategoriaContext);
+  const { categoriaActual } = categoriaContext;
+
+  const librosContext = useContext(LibroContext);
+  const { getLibros } = librosContext;
+
+  const seleccionarCategoria = (id) => {
+    categoriaActual(id);
+    getLibros(id);
   }
 
-  renderLi(items) {
+  const renderLi = (items) => {
     let elements = [];
     if(items){
       elements = items.map((data) =>
         <li key={data._id} className="py-1 px-4  text-teal-400 hover:text-teal-600 hover:rounded-lg">
-          <a className="text-sm font-bold" href="#">#{data.nombre}</a>
-          {/* <button 
+          <button 
             type="button" 
+            onClick={() => seleccionarCategoria(data._id)}
             className="py-1 px-4 text-teal-400 hover:text-teal-600 hover:rounded-lg">
             #{data.nombre}
-          </button> */}
+          </button>
         </li>
       );
     }
     return elements
   }
 
-	render(){
 		return(
       <ul className="flex flex-col w-full text-base ">
-        {this.renderLi(this.props.items)}
+        {renderLi(props.items)}
       </ul>
 		);
-	}
 };
 
 export default ListadoCategorias;

@@ -38,7 +38,7 @@ const AuthState = props => {
     } catch (error) {
       const alerta = {
         msg: error.response.data.msg,
-        categoria: 'alerta-error'
+        categoria: 'alert-error'
       }
       dispatch({
         type: REGISTRO_ERROR,
@@ -82,7 +82,7 @@ const AuthState = props => {
       alert(error)
       const alerta = {
         msg: error.response.data.msg,
-        categoria: 'alerta-error'
+        categoria: 'alert-error'
       }
       dispatch({
         type: LOGIN_ERROR,

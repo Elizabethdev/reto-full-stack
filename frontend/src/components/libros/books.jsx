@@ -1,36 +1,21 @@
 import React, {useContext, useEffect} from 'react';
+import AuthContext from '../../context/auth/authContext';
+import AlertaContext from '../../context/alertas/alertaContext';
+import LibroContext from '../../context/libros/librosContext';
+
 import Header from '../layout/header';
 import SideNav from '../layout/sideNavigation';
-import AuthContext from '../../context/auth/authContext';
 import NewBookCard from './newBookCard';
 import BookCard from './bookCard';
 import Alert from '../ui/alert';
 
 const Libros = () => {
-  const books = [
-    {
-      titulo: 'Título del libro',
-      autor: 'Autor del libro',
-      editorial: 'Editorial del libro',
-      categoria: 'Categoría del libro',
-      descripcion: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repellat eaque, sit libero nam illo  adipisicing elit. Lorem ipsum dolor sit amet consectetur, adipisicing elit...',
-    },
-    {
-      titulo: 'Título del libro',
-      autor: 'Autor del libro',
-      editorial: 'Editorial del libro',
-      categoria: 'Categoría del libro',
-      descripcion: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repellat eaque, sit libero nam illo  adipisicing elit. Lorem ipsum dolor sit amet consectetur, adipisicing elit...',
-    },
-    {
-      titulo: 'Título del libro',
-      autor: 'Autor del libro',
-      editorial: 'Editorial del libro',
-      categoria: 'Categoría del libro',
-      descripcion: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repellat eaque, sit libero nam illo  adipisicing elit. Lorem ipsum dolor sit amet consectetur, adipisicing elit...',
-    }
-  ]
+  const alertaContext = useContext(AlertaContext)
+  const {alerta} = alertaContext;
 
+  const librosContext = useContext(LibroContext);
+  const { libros } = librosContext;
+  
   const authContext = useContext(AuthContext)
   const {usuarioAutenticado} = authContext;
 
@@ -39,7 +24,7 @@ const Libros = () => {
   }, [])
 
   const renderBook = (book, key) => {  
-    let item = <BookCard key={key} book0={book}/>
+    let item = <BookCard key={key} book={book}/>
     return item;
   }
 
@@ -56,7 +41,7 @@ const Libros = () => {
   return(
     <React.Fragment>
       <Header/>
-      <Alert></Alert>
+      { alerta ? (<Alert alert={alerta}></Alert>) : null}
       <div className="h-screen bg-gray-200">
         <div className="flex flex-col md:flex-row px-2 py-6">
           <SideNav></SideNav>
@@ -65,7 +50,7 @@ const Libros = () => {
             <div className="px-8 py-8">
               <div className="flex flex-wrap justify-center md:justify-start -mx-2">
                 <NewBookCard></NewBookCard>
-                {renderBooks(books)}
+                {renderBooks(libros)}
               </div>
             </div>
           </div>
