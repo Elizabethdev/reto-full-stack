@@ -56,5 +56,83 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 <div class="highlight highlight-source-shell">
   <pre>
     Base de datos en la nube, la cadena de conexion esta configurada en backend/variables.env
+
+    Modelos:
+
+    catalogos.categorias: {
+      nombre:{
+        type: String,
+        require: true,
+        trim: true,
+        unique: true
+      },
+      created_at: {
+        type: Date,
+        default: Date.now()
+      }
+    },
+
+    catalogos.libros: {
+      titulo:{
+        type: String,
+        require: true,
+        trim: true
+      },
+      autor:{
+        type: String,
+        require: true,
+        trim: true
+      },
+      editorial:{
+        type: String,
+        require: true,
+        trim: true
+      },
+      categoria:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Categoria',
+        require: true,
+      },
+      descripcion:{
+        type: String,
+        require: true,
+        trim: true
+      },
+      stock:{
+        type: Number,
+        default: 0
+      },
+      created_at: {
+        type: Date,
+        default: Date.now()
+      },
+      created_by: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Usuario',
+        require: true,
+      }
+    },
+    catalogos.usuarios: {
+      nombre:{
+        type: String,
+        require: true,
+        trim: true
+      },
+      email: {
+        type: String,
+        require: true,
+        trim: true,
+        unique: true
+      },
+      password: {
+        type: String,
+        require: true,
+        trim: true
+      },
+      created_at: {
+        type: Date,
+        default: Date.now()
+      }
+    }
   </pre>
 </div>
