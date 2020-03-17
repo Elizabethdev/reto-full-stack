@@ -56,7 +56,8 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 <div class="highlight highlight-source-shell">
   <pre>
     Base de datos en la nube, la cadena de conexion esta configurada en backend/variables.env
-
+    cambiar la variable 'DB_MONGO' actual por DB_MONGO=mongodb://localhost:27017/local, 
+    para pruebas en local con mongoDB compass.
     Modelos:
 
     catalogos.categorias: {
@@ -91,7 +92,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
       categoria:{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Categoria',
-        require: true,
+        require: true
       },
       descripcion:{
         type: String,
@@ -109,9 +110,10 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
       created_by: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Usuario',
-        require: true,
+        require: true
       }
     },
+
     catalogos.usuarios: {
       nombre:{
         type: String,
