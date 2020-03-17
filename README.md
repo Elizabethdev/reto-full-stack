@@ -1,5 +1,5 @@
 # Reto Full stack 
-Administrar catálogos with MongoDB, React, Express y Node js
+Administrar catálogos con MongoDB, React, Express y Node js
 
 ## Para ejecutar la aplicación Backend
 
@@ -26,7 +26,7 @@ Ejecutar la aplicación Backend en modo desarrollo .<br />
 
 Moverse al directorio frontend
 
-### `cd frontend`´
+### `cd frontend`
 
 Descargar paquetes y dependencias:
 
@@ -38,7 +38,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 ### `npm run start`
 
 ** Importante tener el archivo ejemplo.env.development.local como:<br />
-### .env.development.local
+### `.env.development.local`
 
 ** HOST
 ### localhost:3000
@@ -46,8 +46,8 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 ## Pruebas en movil
 <div class="highlight highlight-source-shell">
   <pre>
-    Para realizar las pruebas desde el movil, conectarlo a la misma red y cambiar 'localhost' en .env.development.local
-    por la ip de tu computadora.
+    Para realizar las pruebas desde el movil, conectarlo a la misma red y cambiar 
+    'localhost' en .env.development.local por la ip de tu computadora.
     Vuelve a ejecutar: 'npm run start'
   </pre>
 </div>
