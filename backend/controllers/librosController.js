@@ -19,6 +19,7 @@ exports.crearLibro = async (req, res) => {
     }
 
     let libro = new Libro(req.body);
+    libro.created_by = req.usuario.id;
     await libro.save();
     res.json(libro);
 
@@ -48,7 +49,7 @@ exports.obtenerLibrosCategoria = async (req, res) => {
       return res.status(404).json({msg: 'La categoria no existe'});
     }
 
-    const libros = await Libro.find({ categoria }).populate('categoria', 'nombre').sort({created_at: 1});
+    const libros = await Libro.find({ categoria:categoria, created_by:req.usuario.id }).populate('categoria', 'nombre').sort({created_at: 1});
     res.json({libros});
 
   } catch (error) {

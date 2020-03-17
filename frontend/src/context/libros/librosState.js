@@ -67,6 +67,13 @@ const LibroState = props => {
     }
   }
 
+  const resetLibros = () => {
+    dispatch({
+      type: LIBROS_CATEGORIA,
+      payload: []
+    })
+  }
+
   return(
     <LibroContext.Provider
       value={{
@@ -76,7 +83,8 @@ const LibroState = props => {
         nuevoLibro,
         libroActual,
         editarLibro,
-        eliminarLibro
+        eliminarLibro,
+        resetLibros
       }}>
       {props.children}
     </LibroContext.Provider>

@@ -33,6 +33,11 @@ const LibroSchema = mongoose.Schema({
   created_at: {
     type: Date,
     default: Date.now()
+  },
+  created_by: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Usuario',
+    require: true,
   }
 
 });
