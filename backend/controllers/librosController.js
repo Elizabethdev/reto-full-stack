@@ -48,7 +48,7 @@ exports.obtenerLibrosCategoria = async (req, res) => {
       return res.status(404).json({msg: 'La categoria no existe'});
     }
 
-    const libros = await Libro.find({ categoria }).populate('categoria', 'nombre');
+    const libros = await Libro.find({ categoria }).populate('categoria', 'nombre').sort({created_at: 1});
     res.json({libros});
 
   } catch (error) {
