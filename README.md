@@ -11,9 +11,9 @@ Descargar paquetes y dependencias:
 
 ### `npm install`
 
-Nota: Base de  paquetes y dependencias:
+Nota: en la consola debe aparecer el mensaje:
 
-### `npm install`
+### `DB conectada`
 
 Ejecutar la aplicación Backend en modo desarrollo .<br />
 
@@ -42,6 +42,15 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 ** HOST
 ### localhost:3000
+
+## Pruebas en movil
+<div class="highlight highlight-source-shell">
+  <pre>
+    Para realizar las pruebas desde el movil, conectarlo a la misma red y cambiar 'localhost' en .env.development.local
+    por la ip de tu computadora.
+    Vuelve a ejecutar: 'npm run start'
+  </pre>
+</div>
 
 ## MongoDB
 <div class="highlight highlight-source-shell">
