@@ -11,16 +11,16 @@ Descargar paquetes y dependencias:
 
 ### `npm install`
 
-Nota: en la consola debe aparecer el mensaje:
-
-### `DB conectada`
-
 Ejecutar la aplicación Backend en modo desarrollo .<br />
 
 ### `npm run dev`
 
 ** HOST
 ### localhost:4000
+
+Nota: en la consola debe aparecer el mensaje:
+
+### `DB conectada`
 
 ## Para ejecutar la aplicación Frontend
 
@@ -35,7 +35,7 @@ Descargar paquetes y dependencias:
 Ejecutar la aplicación Frontend en modo desarrollo.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-### `npm run start`
+### `npm start`
 
 ** Importante tener el archivo ejemplo.env.development.local como:<br />
 ### `.env.development.local`
